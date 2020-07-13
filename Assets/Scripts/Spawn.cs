@@ -21,6 +21,4 @@ public class Spawn : Game
             yield return new WaitForSeconds(t2);
         }
     }
-    public override void Trigger(Collider2D other) {}
-    
 }

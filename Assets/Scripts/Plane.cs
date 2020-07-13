@@ -2,6 +2,7 @@
 using UnityEngine;
 public class Plane : Game {
     
+    public static float fuel = 1.0f;
     public float speed; 
     public float speedAmmo;
     public GameObject AmmoPrefab = null;
@@ -36,8 +37,5 @@ public class Plane : Game {
         return x;
     }
     public override void Trigger(Collider2D other) {
-        if(other.tag == "Stone") {
-            Debug.Log("player");
-        }
     }
 }
