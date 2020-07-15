@@ -21,13 +21,12 @@ public class Stone : Game
         r2d.velocity = Vector3.back * speed;
     }
     public override void Trigger(Collider2D other) {
-        GameController gameController =  GameObject.FindWithTag("GameController").GetComponent<GameController>();
         if(other.CompareTag("Player")) {
             //--Plane.fuel;
-            gameController.Lose(Plane.fuel);
-            if(gameController.thisImage.fillAmount == 0f) {
+            GameController.Instance.Lose(Plane.fuel);
+            if(GameController.Instance.thisImage.fillAmount == 0f) {
                 Destroy(other.gameObject, 0.3f);
-                Debug.Log("Player die!");
+                StartCoroutine(GameController.Instance.PlaneRepate());
             }
         }
     }

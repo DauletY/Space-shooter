@@ -12,21 +12,20 @@ public class Ammo : Game {
 
     }
     public override void Trigger(Collider2D other) {
-        Stone rb = other.GetComponent<Stone>();
+        Stone rb = other.GetComponent<Stone>(); 
         if(rb.tag == "Stone") {
-            //GameController.score++;
             GameController.Score();
             // mag
             if (GameController.score <= 6) {
                 rb.StoneDown();
-                Debug.Log(GameController.score);
+                //Debug.Log(GameController.score);
             } 
             else if(GameController.score <= 12) {
                 Mag();
             }
             else if(GameController.score == 15) {
-                GameController.score = 15;
                 Debug.Log(" *** You win *** " + GameController.score);
+                StartCoroutine(GameController.Instance.PlaneRepate());
             }else {
             }
             GameObject gO = Instantiate(explostion, rb.transform.position, Quaternion.identity);
